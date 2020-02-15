@@ -11,7 +11,7 @@ const DUMMY_PLACES = [
     address: "1 Sheikh Mohammed bin Rashid Boulevard, Dubai, United Arab Emirates",
     location: {
       lat: 25.1972,
-      long: 55.2744
+      lng: 55.2744
     },
     creator: "u1"
   },
@@ -23,7 +23,7 @@ const DUMMY_PLACES = [
     address: "1 Sheikh Mohammed bin Rashid Boulevard, Dubai, United Arab Emirates",
     location: {
       lat: 25.1972,
-      long: 55.2744
+      lng: 55.2744
     },
     creator: "u2"
   }
