@@ -8,22 +8,22 @@ import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from "./user/pages/Auth";
 import { AuthContext } from "./shared/context/auth-context";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(false);
   const [userId, setUserId] = useState(false);
 
-  const login = useCallback((uid) => {
-    setIsLoggedIn(true);
+  const login = useCallback((uid, token) => {
+    setToken(token);
     setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
-    setIsLoggedIn(false);
+    setToken(null);
     setUserId(null);
   }, []);
 
   let routes;
 
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -59,13 +59,18 @@ function App() {
     );
   }
   return (
-    <AuthContext.Provider value={
-      { isLoggedIn, login, logout, userId }
-    }>
+    <AuthContext.Provider value={{
+      isLoggedIn: !!token,
+      token,
+      login,
+      logout,
+      userId
+    }}
+    >
       <Router>
         <MainNavigation />
         <main>
-            {routes}
+          {routes}
         </main>
       </Router>
     </AuthContext.Provider>
